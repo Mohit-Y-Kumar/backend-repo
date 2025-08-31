@@ -10,22 +10,18 @@ require('./config/passport')(passport);
 
 const app = express();
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 app.use(passport.initialize());
 
-// Routes
 app.use('/auth', authRoutes);
 app.use('/notes', notesRoutes);
 
-// Global error handler
 app.use((err, req, res, next) => {
   console.error(err);
   res.status(err.status || 500).json({ error: err.message || 'Server error' });
 });
 
-// Connect MongoDB and start server
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => {
     console.log('MongoDB connected');
