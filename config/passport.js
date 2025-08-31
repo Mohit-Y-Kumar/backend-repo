@@ -10,7 +10,6 @@ module.exports = function(passport) {
     try {
       let user = await User.findOne({ googleId: profile.id });
       if (user) return done(null, user);
-      // if email exists but not googleId, you might want to link accounts
       user = new User({
         googleId: profile.id,
         name: profile.displayName,
