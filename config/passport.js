@@ -21,7 +21,6 @@ module.exports = function(passport) {
       done(err, null);
     }
   }));
-  console.log("Client ID:", process.env.GOOGLE_CLIENT_ID);
-console.log("Callback URL:", process.env.GOOGLE_CALLBACK_URL);
+
 
 };
